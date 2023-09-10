@@ -5,27 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Github Finder</title>
     <link rel="stylesheet" href="./styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <div class="main">
       <h1>Github Finder</h1>
-      <input type="search" name="" id="searchField" />
-      <input type="button" value="Search" id="button" />
-    </div>
-    <div id="root"></div>
-
-    <!-- <div class="root">
-      <div class="header">
-        <div class="left_heading">
-          <img src="" alt="" />
-          <div>
-            <h2>title</h2>
-            <h3>ID</h3>
-          </div>
-        </div>
-        <div>joined</div>
+      <div class="inputsss">
+        <input type="search" name="" id="searchField" class="search" />
+        <button class="button" id="button">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
       </div>
-    </div> -->
+    </div>
+
+    <div class="root-container">
+      <div id="root"><h1>Search GithubId</h1></div>
+    </div>
+
     <script src="./script.js"></script>
   </body>
 </html>
