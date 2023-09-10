@@ -1,0 +1,30 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.root{
+    height: 400px;
+    width: 80%;
+    border: 2px solid purple;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+
+.left_heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
