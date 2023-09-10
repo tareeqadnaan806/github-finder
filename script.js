@@ -13,75 +13,50 @@ const getApi = (value) => {
     .then((response) => {
       return response.json();
     })
-    .then((res) => {
-      let result = res;
-      console.log(result);
-      if (value === undefined) {
-        result.map((ele) => {
-          console.log(ele.events_url);
-          const root = document.getElementById("root");
-          const container = document.createElement("div");
-          const name = document.createElement("h2");
-          const image = document.createElement("img");
-          const link = document.createElement("a");
-          const joined = document.createElement("div")
-          const bio = document.createElement("div")
-          const followers = document.createElement("div")
-          const following = document.createElement("div")
-          const repos = document.createElement("div")
-          const location = document.createElement("div")
-          
-          name.innerText = ele.name;
-          image.src = ele.avatar_url;
-          link.href = ele.html_url;
-          link.innerHTML = ele.login;
-          joined.innerText = ele.created_at
-          bio.innerText = ele.bio
-          followers.innerText = ele.followers
-          following.innerText = ele.following
-          repos.innerText = ele.public_repos
-          location.innerText = ele.location
-    
-          root.appendChild();
-        });
+    .then((data) => {
+      console.log(data);
+      if (data.message === "Not Found" || value === "") {
+        const Error = document.createElement("h2");
+        Error.innerText = "User Not Found Please Enter valid ID";
+        root.appendChild(Error);
       } else {
-        if (result.message === "Not Found" || value === "") {
-          const Error = document.createElement("h2");
-          Error.innerText = "User Not Found Please Enter valid ID";
-          root.appendChild(Error);
-        } else {
-          const root = document.getElementById("root");
-          const container = document.createElement("div");
-          const name = document.createElement("h2");
-          const image = document.createElement("img");
-          const link = document.createElement("a");
-          const joined = document.createElement("div")
-          const bio = document.createElement("div")
-          const followers = document.createElement("div")
-          const following = document.createElement("div")
-          const repos = document.createElement("div")
-          const location = document.createElement("div")
-          name.innerText = result.name;
-          image.src = result.avatar_url;
-          link.href = result.html_url;
-          link.innerHTML = result.login;
-          joined.innerText = result.created_at
-          bio.innerText = result.bio
-          followers.innerText = `followers: ${result.followers}`
-          following.innerText =  `following: ${result.following}`
-          repos.innerText = result.public_repos
-          location.innerText = result.location
-          container.appendChild(name)
-          container.appendChild(image)
-          container.appendChild(link)
-          container.appendChild(joined)
-          container.appendChild(bio)
-          container.appendChild(followers)
-          container.appendChild(following)
-          container.appendChild(repos)
-          container.appendChild(location)
-          root.appendChild(container);
-        }
+        const root = document.getElementById("root");
+        root.innerHTML = `
+        <section>
+          <div class="heading">
+            <div class="left">
+            <img src="${data.avatar_url}" alt="">
+              <div class="profile">
+                <div>${data.name}</div>
+                <div>${data.login}</div>
+              </div>
+            </div>
+            <div class="right">
+              <div>Joined: ${data.created_at.slice(0, 10)}</div>
+              <div>${data.location}</div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <p class="bios">${data.bio}</p>
+        </section>
+
+        <section class="asdf">
+          <div class="repos">
+            <p>Repos</p>
+            <p>${data.public_repos}</p>
+          </div>
+          <div class="folloers">
+            <p>Followers</p>
+            <p>${data.followers}</p>
+          </div>
+          <div class="following">
+            <p>Following</p>
+            <p>${data.following}</p>
+          </div>
+        </section>
+          `;
       }
     });
 };
